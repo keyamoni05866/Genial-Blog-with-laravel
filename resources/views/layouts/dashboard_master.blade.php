@@ -54,6 +54,13 @@
                 class="material-icons-two-tone fs-5">face</i>Profile</a>
 
         </li>
+        <li class="nav-item mt-3">
+
+
+            <a class="nav-link {{ \Request::route()->getName() == 'tag' ? 'active' : '' }} " href="{{ route('tag')}}" ><i
+                class="material-icons-two-tone fs-5">tag</i>Tag</a>
+
+        </li>
 
       </ul>
     </div>
