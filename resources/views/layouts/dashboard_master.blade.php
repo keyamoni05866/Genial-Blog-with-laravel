@@ -68,6 +68,22 @@
                 class="material-icons-two-tone fs-5">category</i>Categories</a>
 
         </li>
+        <li class="nav-item mt-3">
+
+
+            <a class="nav-link {{ \Request::route()->getName() == 'blog.insert.view' ? 'active' : '' }} " href="{{ route('blog.insert.view')}}" ><i
+                class="material-icons-two-tone fs-5">post_add</i>Insert Blog</a>
+
+        </li>
+        <li class="nav-item mt-3">
+
+
+            <a class="nav-link {{ \Request::route()->getName() == 'blog' ? 'active' : '' }} " href="{{ route('blog')}}" ><i
+                class="material-icons-two-tone fs-5">compost</i> Blogs</a>
+
+        </li>
+
+
 
       </ul>
     </div>

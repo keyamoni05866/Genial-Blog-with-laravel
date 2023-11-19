@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -50,4 +51,15 @@ Route::post('/category/insert', [CategoryController::class, 'insert'])->name('ca
 Route::post('/category/status/{id}', [CategoryController::class, 'status'])->name('category.status');
 Route::post('/category/update/{id}', [CategoryController::class, 'update'])->name('category.update');
 Route::post('/category/delete/{id}', [CategoryController::class, 'delete'])->name('category.delete');
+
+// Blog Section
+
+Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+Route::get('/blog/insert/view', [BlogController::class, 'insert_view'])->name('blog.insert.view');
+Route::post('/blog/insert', [BlogController::class, 'insert'])->name('blog.insert');
+Route::get('/blog/status/{id}', [BlogController::class, 'status'])->name('blog.status');
+Route::get('/blog/feature/update/{id}', [BlogController::class, 'feature'])->name('blog.feature');
+Route::get('/blog/edit/view/{id}', [BlogController::class, 'edit_view'])->name('blog.edit.view');
+Route::post('/blog/edit/{id}', [BlogController::class, 'edit'])->name('blog.edit');
+
 

@@ -6,7 +6,7 @@
 <div class="row border-bottom mt-4 border-secondary-subtle">
     <div class="col">
         <div class="page-description">
-            <h1>Tag Section</h1>
+            <h2>Tag Section</h2>
         </div>
     </div>
 
@@ -16,7 +16,7 @@
     <div class="col-5">
         <div class="card">
             <div class="card-header">
-                <h4>Insert Tags</h4>
+                <h3>Insert Tags</h3>
             </div>
             <div class="card-body">
                 <form action="{{ route('tag.insert') }}"  method="POST">
