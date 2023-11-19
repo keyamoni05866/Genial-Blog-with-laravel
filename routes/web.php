@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -41,3 +42,12 @@ Route::post('/tag/insert', [TagController::class, 'insert'])->name('tag.insert')
 Route::post('/tag/status/{id}', [TagController::class, 'status'])->name('tag.status');
 Route::post('/tag/update/{id}', [TagController::class, 'update'])->name('tag.update');
 Route::post('/tag/delete/{id}', [TagController::class, 'delete'])->name('tag.delete');
+
+
+// category section
+Route::get('/category', [CategoryController::class, 'index'])->name('category');
+Route::post('/category/insert', [CategoryController::class, 'insert'])->name('category.insert');
+Route::post('/category/status/{id}', [CategoryController::class, 'status'])->name('category.status');
+Route::post('/category/update/{id}', [CategoryController::class, 'update'])->name('category.update');
+Route::post('/category/delete/{id}', [CategoryController::class, 'delete'])->name('category.delete');
+

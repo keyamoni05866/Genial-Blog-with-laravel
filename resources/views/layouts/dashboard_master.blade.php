@@ -61,6 +61,13 @@
                 class="material-icons-two-tone fs-5">tag</i>Tag</a>
 
         </li>
+        <li class="nav-item mt-3">
+
+
+            <a class="nav-link {{ \Request::route()->getName() == 'category' ? 'active' : '' }} " href="{{ route('category')}}" ><i
+                class="material-icons-two-tone fs-5">category</i>Categories</a>
+
+        </li>
 
       </ul>
     </div>
