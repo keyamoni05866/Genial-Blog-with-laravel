@@ -61,5 +61,8 @@ Route::get('/blog/status/{id}', [BlogController::class, 'status'])->name('blog.s
 Route::get('/blog/feature/update/{id}', [BlogController::class, 'feature'])->name('blog.feature');
 Route::get('/blog/edit/view/{id}', [BlogController::class, 'edit_view'])->name('blog.edit.view');
 Route::post('/blog/edit/{id}', [BlogController::class, 'edit'])->name('blog.edit');
+Route::post('/blog/delete/{id}', [BlogController::class, 'delete'])->name('blog.delete');
+Route::post('/blog/restore/{id}', [BlogController::class, 'restore'])->name('blog.restore');
+Route::post('/blog/restore/delete/{id}', [BlogController::class, 'restore_delete'])->name('blog.restore.delete');
 
 

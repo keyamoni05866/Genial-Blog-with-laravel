@@ -14,8 +14,8 @@ class BlogController extends Controller
     public function index(){
         $blogs = Blog::where('user_id',auth()->id())->paginate(2);
         // $alls = Blog::paginate(2);
-        // $trashes = Blog::onlyTrashed()->get();
-        return view('dashboard.blog.index',compact('blogs'));
+        $trashes = Blog::onlyTrashed()->get();
+        return view('dashboard.blog.index',compact('blogs','trashes'));
     }
 
 
@@ -48,7 +48,7 @@ class BlogController extends Controller
         $blog->ManyRelationTags()->attach($request->ids);
         $blog->save();
 
-        return back();
+        return redirect()->route('blog');
     }
 
     // change status
@@ -149,6 +149,25 @@ class BlogController extends Controller
         }
 
        }
+    //    delete
+       public function delete($id){
+        Blog::find($id)->delete();
 
+        return back()->with('delete_success','Blog Deleted Successfully');
+ }
+
+ // Restore
+ public function restore($id){
+    Blog::withTrashed()->where('id',$id)->restore();
+    return back();
+}
+
+   // Restore Delete
+
+   public function restore_delete($id){
+    Blog::where('id',$id)->forceDelete();
+      // $blogs->save();
+      return back();
+  }
 
 }

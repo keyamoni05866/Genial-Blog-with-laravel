@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('image');
             $table->string('status')->default('deactive');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
