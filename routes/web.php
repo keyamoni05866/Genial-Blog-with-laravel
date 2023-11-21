@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Auth;
@@ -64,5 +65,13 @@ Route::post('/blog/edit/{id}', [BlogController::class, 'edit'])->name('blog.edit
 Route::post('/blog/delete/{id}', [BlogController::class, 'delete'])->name('blog.delete');
 Route::post('/blog/restore/{id}', [BlogController::class, 'restore'])->name('blog.restore');
 Route::post('/blog/restore/delete/{id}', [BlogController::class, 'restore_delete'])->name('blog.restore.delete');
+
+
+// About the Bloger
+
+Route::get('/about', [AboutController::class, 'index'])->name('about');
+Route::post('/about/insert', [AboutController::class, 'insert'])->name('about.insert');
+Route::post('/about/status/{id}', [AboutController::class, 'status'])->name('about.status');
+Route::get('/about/delete/{id}', [AboutController::class, 'delete'])->name('about.delete');
 
 

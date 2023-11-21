@@ -57,6 +57,13 @@
         <li class="nav-item mt-3">
 
 
+            <a class="nav-link {{ \Request::route()->getName() == 'about' ? 'active' : '' }} " href="{{ route('about')}}" ><i
+                class="material-icons-two-tone fs-5">person</i>About Me</a>
+
+        </li>
+        <li class="nav-item mt-3">
+
+
             <a class="nav-link {{ \Request::route()->getName() == 'tag' ? 'active' : '' }} " href="{{ route('tag')}}" ><i
                 class="material-icons-two-tone fs-5">tag</i>Tag</a>
 

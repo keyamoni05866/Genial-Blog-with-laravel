@@ -126,6 +126,7 @@
                                         </div>
 
                                     </div>
+                                </div>
 
 
                                     <form action="{{ route('category.delete', $category->id) }}" method="POST">
