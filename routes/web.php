@@ -73,5 +73,6 @@ Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::post('/about/insert', [AboutController::class, 'insert'])->name('about.insert');
 Route::post('/about/status/{id}', [AboutController::class, 'status'])->name('about.status');
 Route::get('/about/delete/{id}', [AboutController::class, 'delete'])->name('about.delete');
+Route::post('/about/update/{id}', [AboutController::class, 'update'])->name('about.update');
 
 

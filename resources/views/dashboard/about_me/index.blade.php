@@ -98,7 +98,66 @@
                    </form>
 
                  <a  href="{{ route('about.delete', $about->id)}}" class="btn btn-dark btn-sm ms-2">Delete</a>
-                 <button class="btn btn-info btn-sm ms-2">Edit</button>
+                 <button class="btn btn-info btn-sm ms-2" data-bs-toggle="modal"
+                 data-bs-target="#aboutModal{{ $about->id }}">Edit</button>
+                 {{-- Edit Input Modal --}}
+
+                 <div class="modal fade" id="aboutModal{{ $about->id }}" tabindex="-1"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Category Inventroy
+                                </h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="card-body">
+                                    <form action="{{ route('about.update',$about->id)}}"
+                                    enctype="multipart/form-data" method="POST" >
+                                    @csrf
+
+
+                               <div  class="row">
+                                <div class="col-6 mt-2">
+                                    <label for="exampleInputEmail1" class="form-label">
+                                        Title:</label>
+                                    <input type="text" class="form-control form-control-rounded"
+                                        aria-describedby="..." placeholder="Insert Bio Title"
+                                        name="title" value="{{$about->title}}">
+
+                                </div>
+
+                               <div class="col-6 ">
+                                <label for="exampleInputEmail1" class="form-label mt-3">Profession:</label>
+                                <input type="text" class="form-control  form-control-rounded"
+                                    aria-describedby="..." placeholder="Insert Your Profession"
+                                    name="profession" value="{{$about->profession}}">
+                               </div>
+                               </div>
+                                    <label for="exampleInputEmail1" class="form-label mt-3">Your
+                                        Image:</label>
+                                    <input type="file"
+                                        class="form-control form-control-solid-bordered form-control-rounded"
+                                        aria-describedby="..." name="image">
+
+
+                                        <label for="exampleInputEmail1" class="form-label mt-3"> Description:</label>
+                                        <textarea  class="form-control  form-control-rounded" rows="5" name="description"> {{$about->description}}</textarea>
+                                    <button type="submit"
+                                        class="btn btn-info btn-md ms-2 mt-2">Update</button>
+                                </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                  </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
               </div>
             </div>
           </div>
