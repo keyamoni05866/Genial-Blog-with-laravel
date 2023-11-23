@@ -23,6 +23,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard.root.home');
+        if(auth()->user()->role == 'owner'){
+
+            return view('dashboard.root.home');
+        }else{
+            return view('frontend.error.error');
+        }
+
     }
 }

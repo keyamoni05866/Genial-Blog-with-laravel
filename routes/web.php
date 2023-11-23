@@ -25,6 +25,7 @@ use App\Http\Controllers\TagController;
 
 // frontend start
 Route::get('/', [FrontendController::class, 'index'])->name('root');
+Route::get('/root/blog/single/{id}', [FrontendController::class, 'single'])->name('root.single');
 
 
 // Auth::routes(['register' => false]);
