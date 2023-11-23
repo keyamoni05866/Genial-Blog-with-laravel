@@ -1,8 +1,11 @@
 <?php
 
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -20,15 +23,24 @@ use App\Http\Controllers\TagController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// frontend start
+Route::get('/', [FrontendController::class, 'index'])->name('root');
+
+
+// Auth::routes(['register' => false]);
+Auth::routes(['verify' =>true]);
+
+// for registration off
+Route::get('/register', function () {
+    return view('frontend.error.error');
 });
 
-Auth::routes();
+// route for error
+
 
 
 // dashboard starts
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('home');
 
 
 // profile update
@@ -74,5 +86,26 @@ Route::post('/about/insert', [AboutController::class, 'insert'])->name('about.in
 Route::post('/about/status/{id}', [AboutController::class, 'status'])->name('about.status');
 Route::get('/about/delete/{id}', [AboutController::class, 'delete'])->name('about.delete');
 Route::post('/about/update/{id}', [AboutController::class, 'update'])->name('about.update');
+
+
+
+
+// email verification
+Route::get('/email/verify', function () {
+    return view('auth.verify');
+})->middleware('auth')->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+
+    return redirect('/home');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+
+    return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 
