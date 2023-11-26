@@ -35,4 +35,14 @@ class FrontendController extends Controller
             }
             return view('frontend.singleBlog.singleBlog', compact('blog','about'));
         }
+
+
+
+        // all Blogs
+
+        public function blog_index(){
+
+                $blogs = Blog::where('status','active')->get();
+                return view('frontend.blogs.index',compact('blogs'));
+        }
 }

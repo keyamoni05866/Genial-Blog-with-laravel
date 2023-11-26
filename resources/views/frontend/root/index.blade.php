@@ -7,20 +7,20 @@
 	<!--====== Banner Area Start ======-->
 	<section class="banner-section">
 		<div class="banner-slider">
-			@forelse ($features as $feature)
+			@forelse ($features as $blog)
                 <div class="sinlge-banner" style="height: 800px;">
                 <div class="banner-wrapper">
-                    <div class="banner-bg" style="background-image:  url('{{ asset('uploads/blog')}}/{{$feature->image}}')"></div>
+                    <div class="banner-bg" style="background-image:  url('{{ asset('uploads/blog')}}/{{$blog->image}}')"></div>
                     <div class="banner-content" data-animation="fadeInUp" data-delay="0.3s" style="height: 500px">
                         <h3 class="title" data-animation="fadeInUp" data-delay="0.6s">
                             <a href="#">
-                               {{$feature->title}}
+                               {{$blog->title}}
                             </a>
                         </h3>
                         <ul class="meta" data-animation="fadeInUp" data-delay="0.8s">
-                            <li><a href="#">By -{{$feature->RelationWithUser->name}}</a></li>
+                            <li><a href="#">By -{{$blog->RelationWithUser->name}}</a></li>
                             <li>
-                                @foreach ($feature->ManyRelationTags as $item)
+                                @foreach ($blog->ManyRelationTags as $item)
                                 <li >
                                     <a href="">{{$item->title}}</a>
                                 </li>
@@ -30,8 +30,8 @@
                         <p data-animation="fadeInUp" data-delay="1s">
 
                             <?php
-                            $blog_des = strip_tags($feature->description);
-                            $blog_id = $feature->id;
+                            $blog_des = strip_tags($blog->description);
+                            $blog_id = $blog->id;
                             if(strlen($blog_des > 250)):
                             $blog_cut = substr($blog_des,0,250);
                             $endpoint= strrpos($blog_cut, " ");
@@ -42,7 +42,7 @@
 
 
                             ?>
-                             <a href="{{ route('root.single',$feature->id)}}" class='text-info fw-bold'>Read More</a>
+                             <a href="{{ route('root.single',$blog->id)}}" class='text-info fw-bold'>Read More</a>
                         </p>
 
                     </div>
@@ -107,7 +107,7 @@
 
                                                             <li class="categories">
                                                                 Tags:
-                                                                @foreach ($feature->ManyRelationTags as $item)
+                                                                @foreach ($blog->ManyRelationTags as $item)
                                                                 <a href="#">
 
                                                                    {{$item->title}},
@@ -204,15 +204,15 @@
                         {{-- popular article --}}
 						<div class="col-lg-12 col-sm-6 widget popular-articles">
 							<h5 class="widget-title">Popular Articles</h5>
-							@forelse ($popular_blogs as $popular)
+							@forelse ($popular_blogs as $blog)
                                 <div class="articles mt-4">
                             <div class="article">
                                 <div class="thumb">
-                                    <img src="{{ asset('uploads/blog')}}/{{$popular->image}}" alt="Image">
+                                    <img src="{{ asset('uploads/blog')}}/{{$blog->image}}" alt="Image">
                                 </div>
                                 <div class="desc">
-                                    <h6><a href="blog-details.html">{{$popular->title}}</a></h6>
-                                    <span class="post-date">{{$popular->date}}</span>
+                                    <h6><a href="{{ route('root.single', $blog->id)}}">{{$blog->title}}</a></h6>
+                                    <span class="post-date">{{$blog->date}}</span>
                                 </div>
                             </div>
 

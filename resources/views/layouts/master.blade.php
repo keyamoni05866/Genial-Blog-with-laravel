@@ -48,9 +48,11 @@
 						<a href="javascript:void(0)" class="search-btn"><i class="fas fa-search"></i></a>
 						<div class="search-form">
 							<a href="#" class="search-close"><i class="fal fa-times"></i></a>
-							<form action="#">
-								<input type="search" placeholder="Type here to search">
-							</form>
+                            <form action="{{ route('search.blogs')}}" method="GET">
+                                <input type="search"  placeholder="What are you looking for?" name="blog_search">
+
+                                <button type="submit"  class="btn btn-info" style="margin-right:200px"> search</button>
+                            </form>
 							<div class="search-overly"></div>
 						</div>
 					</div>
@@ -77,15 +79,10 @@
 
 							<ul class="offcanvas-menu">
 								<li>
-									<a href="index.html">Home</a>
-									<ul class="submenu">
-										<li><a href="index-1.html">Home One</a></li>
-										<li><a href="index-2.html">Home Two</a></li>
-										<li><a href="index-3.html">Home Three</a></li>
-										<li><a href="index-4.html">Home Four</a></li>
-									</ul>
+									<a href="{{ route('root')}}">Home</a>
+
 								</li>
-								<li><a href="blog-details.html">Blog Single</a></li>
+								<li><a href="{{route('root.blog')}}">Blogs</a></li>
 								<li><a href="about.html">About</a></li>
 								<li><a href="photo-stories.html">Photo Stories</a></li>
 								<li><a href="contact.html">Contact</a></li>

@@ -11,6 +11,7 @@
                 <ul class="post-meta">
                     <li>{{ \Carbon\Carbon::parse($blog->date)->format('M , d- Y') }}</li>
                     <li>
+                        {{-- {{$blog->RelationWithCategory->title}} --}}
                         @foreach ($blog->ManyRelationTags as $item)
                         <a href="#">{{$item->title}},</a>
                       @endforeach
@@ -76,18 +77,21 @@
             <div class="related-posts">
                 <h4 class="related-title">Related Posts</h4>
                 <div class="related-loop row justify-content-center">
-                    <div class="col-lg-6 col-md-6 col-sm-10">
-                        <div class="related-post-box">
-                            <div class="thumb">
-                                <img src="{{ asset('frontend')}}/assets/img/post-details/related-01.jpg" alt="image">
-                            </div>
-                            <h5 class="title">
-                                <a href="#">
-                                    The Olivier da Costa restaurant experience in Lisbon
-                                </a>
-                            </h5>
-                        </div>
-                    </div>
+
+                       <div class="col-lg-6 col-md-6 col-sm-10">
+                           <div class="related-post-box">
+                               <div class="thumb">
+                                   <img src="{{ asset('frontend')}}/assets/img/post-details/related-01.jpg" alt="image">
+                               </div>
+                               <h5 class="title">
+                                   <a href="#">
+                                      {{$item->title}}
+                                   </a>
+                               </h5>
+                           </div>
+                       </div>
+
+
                     <div class="col-lg-6 col-md-6 col-sm-10">
                         <div class="related-post-box">
                             <div class="thumb">
