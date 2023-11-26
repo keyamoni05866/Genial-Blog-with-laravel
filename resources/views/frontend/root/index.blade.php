@@ -22,7 +22,7 @@
                             <li>
                                 @foreach ($blog->ManyRelationTags as $item)
                                 <li >
-                                    <a href="">{{$item->title}}</a>
+                                    <a href="{{ route('root.tag.blog', $item->id)}}">{{$item->title}}</a>
                                 </li>
                             @endforeach
                         </li>
@@ -108,7 +108,7 @@
                                                             <li class="categories">
                                                                 Tags:
                                                                 @foreach ($blog->ManyRelationTags as $item)
-                                                                <a href="#">
+                                                                <a href="{{ route('root.tag.blog', $item->id)}}">
 
                                                                    {{$item->title}},
 
@@ -169,7 +169,7 @@
 							<div class="categories">
 								@forelse ($categories as $category)
                                     <div class="categorie" style="background-image: url({{ asset('uploads/category')}}/{{$category->image}});">
-                                    									<a href="#">
+                                    									<a href="{{ route('root.category.blog', $category->id)}}">
                                     										{{$category->title}}
                                     									</a>
                                     								</div>

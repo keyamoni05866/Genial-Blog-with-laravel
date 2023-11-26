@@ -13,7 +13,7 @@
                     <li>
                         {{-- {{$blog->RelationWithCategory->title}} --}}
                         @foreach ($blog->ManyRelationTags as $item)
-                        <a href="#">{{$item->title}},</a>
+                        <a href="{{ route('root.tag.blog', $item->id)}}">{{$item->title}},</a>
                       @endforeach
                     </li>
                 </ul>
@@ -44,7 +44,7 @@
                 <div class="post-tags">
                     <span>Tag:</span>
                    @foreach ($blog->ManyRelationTags as $item)
-                     <a href="#">{{$item->title}},</a>
+                     <a href="{{ route('root.tag.blog', $item->id)}}">{{$item->title}},</a>
                    @endforeach
 
                 </div>
@@ -59,22 +59,22 @@
                     <div class="author-img">
                         <img src="{{ asset('uploads/about')}}/{{$about->image}}" alt="PostAuthor">
                     </div>
-                    <h5><a href="#">{{$about->name}}</a></h5>
+                    <h5><a href="#">Author: {{$about->name}}</a></h5>
                     <p>{{$about->profession}}</p>
                 </div>
             </div>
-            <div class="post-nav">
+            {{-- <div class="post-nav">
                 <div class="prev-post">
                     <a href="#"><i class="far fa-angle-left"></i></a><span class="title">Previous Post</span>
                 </div>
                 <div class="next-post">
                     <span class="title">Next Post</span><a href="#"><i class="far fa-angle-right"></i></a>
                 </div>
-            </div>
+            </div> --}}
 
 
             {{-- related Post --}}
-            <div class="related-posts">
+            {{-- <div class="related-posts">
                 <h4 class="related-title">Related Posts</h4>
                 <div class="related-loop row justify-content-center">
 
@@ -85,7 +85,7 @@
                                </div>
                                <h5 class="title">
                                    <a href="#">
-                                      {{$item->title}}
+
                                    </a>
                                </h5>
                            </div>
@@ -105,7 +105,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
 
         {{-- comments --}}

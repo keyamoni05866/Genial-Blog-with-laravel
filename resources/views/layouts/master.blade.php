@@ -82,21 +82,11 @@
 									<a href="{{ route('root')}}">Home</a>
 
 								</li>
-								<li><a href="{{route('root.blog')}}">Blogs</a></li>
+								<li><a href="{{route('root.blogs')}}">Blogs</a></li>
 								<li><a href="about.html">About</a></li>
-								<li><a href="photo-stories.html">Photo Stories</a></li>
-								<li><a href="contact.html">Contact</a></li>
-								<li><a href="404.html">404</a></li>
-								<li>
-									<a href="shop.html">Shop</a>
-									<ul class="submenu">
-										<li><a href="product-details.html">Shop Details -A</a></li>
-										<li><a href="product-details-2.html">Shop Details -B</a></li>
-										<li><a href="cart.html">Cart</a></li>
-										<li><a href="checkout.html">Checkout</a></li>
-										<li><a href="myaccount.html">My account</a></li>
-									</ul>
-								</li>
+
+								<li><a href="{{ route('contact')}}">Contact</a></li>
+
 							</ul>
 
 							<div class="social-icons">

@@ -2,13 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactMail;
 use App\Models\About;
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class FrontendController extends Controller
 {
+// error
+              public function error(){
+                return view('frontend.error.error');
+              }
+
+
         public function index(){
             $blogs = Blog::where('status','active')->latest()->paginate(5);
             $features= Blog::where('feature','active')->get();
@@ -44,5 +53,29 @@ class FrontendController extends Controller
 
                 $blogs = Blog::where('status','active')->get();
                 return view('frontend.blogs.index',compact('blogs'));
+        }
+
+
+        // Contact
+
+        public function contact_index(){
+            return view('frontend.contact.index');
+        }
+
+        //contact post
+
+        public function contact_post(Request $request){
+            Contact::insert([
+
+                'name' => $request->name,
+                'email' => $request->email,
+                'message' => $request->message,
+                'created_at' => now(),
+
+             ]);
+
+            Mail::to($request->email)->send(new ContactMail($request->except('_token')));
+
+             return back();
         }
 }
