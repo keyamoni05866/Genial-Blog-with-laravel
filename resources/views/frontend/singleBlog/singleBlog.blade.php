@@ -7,48 +7,45 @@
     <div class="container container-1000">
         <div class="post-details">
             <div class="entry-header">
-                <h2 class="title">Dating While Studying Abroad—Maximize Fun, Minimize Heartbreak</h2>
+                <h2 class="title">{{$blog->title}}</h2>
                 <ul class="post-meta">
-                    <li>September 07 - 2020</li>
-                    <li><a href="#">Design,</a><a href="#">Travel,</a><a href="#">photography</a></li>
+                    <li>{{ \Carbon\Carbon::parse($blog->date)->format('M , d- Y') }}</li>
+                    <li>
+                        @foreach ($blog->ManyRelationTags as $item)
+                        <a href="#">{{$item->title}},</a>
+                      @endforeach
+                    </li>
                 </ul>
                 <p class="short-desc">
-                    When it comes to creating is a website for your busi-ness, an attreactive design will only get
-                    you far. With people increasingly using their tablets and smartphones and website for your
-                    business, an attractive design will only get you far. With people increasingly using their
-                    tablets and smartphones shop online,...
+                    <?php
+                    $blog_des = strip_tags($blog->description);
+                    $blog_id = $blog->id;
+                    if(strlen($blog_des > 250)):
+                    $blog_cut = substr($blog_des,0,250);
+                    $endpoint= strrpos($blog_cut, " ");
+                    $blog_des = $endpoint?substr($blog_cut,0,$endpoint):substr($blog_cut,0);
+                    // $blog_des .= ".....";
+                  endif;
+                  echo $blog_des;
+                  ?>
                 </p>
             </div>
             <div class="entry-media text-center">
-                <img src="{{ asset('frontend')}}/assets/img/post-details/01.jpg" alt="image">
+                <img src="{{ asset('uploads/blog')}}/{{$blog->image}}" alt="image" style="width: 800px; height:500px; border-radius:10px">
             </div>
             <div class="entry-content">
                 <p class="has-dropcap">
-                    Adipiscing elit com-modo ligula eget dolor Morlem ipsuim dolor sit amiet nec, isc thua sdfk
-                    onsec tetuer adipi scing elit. Aenean commeod ligula eget dolor Cuem sociis thena toquhte thigp
-                    enatibus et magnis dis partu rient montes. Morlem ipsum doelor sit amet nec penatib et thjem
-                    agnis dis part urient montes. Morlem ipsum dolor sit amet nerc, conseec tetuer adipiscing elit.
-                    Aenean commodo ligulaits eget dolior. Aenean type massa. Cum sociis nato que pena tibus et
-                    magnis dis partu rient moentes. Morlm ipsum dolor tibushrde set amet nec, consec tetuer
-                    adipiscing elit. Aenean commodo ligula eget dolor.
+                    {{$blog->description}}
                 </p>
-                <p>
-                    Enatibus et magnis dis partu rient montes. Morlem ipsum doelor sit amet nec penatib et thjem
-                    agnis dis part uriet montes. Morlem ipsium dolor sit amet nerc, conseec tetuer adipi scing elit.
-                    Aenean commodo ligulaits eget doilior. Aenean type massa. Cum sociis nato que pena tibus et
-                    magns dihtres partu rient moentes. Morlm ipsum dolor set amet nec, consec tetuer adipiscing
-                    elit. Aenean comiodo ligula eget dolor. magnis dis partu rient moentes. Morlm ipsum dolor set am
-                    nec, consec tetuer adipiscing elit
-                </p>
+
             </div>
             <div class="entry-footer">
                 <div class="post-tags">
                     <span>Tag:</span>
-                    <a href="#">burger,</a>
-                    <a href="#">pixxa,</a>
-                    <a href="#">drink,</a>
-                    <a href="#">hot,</a>
-                    <a href="#">spacial,</a>
+                   @foreach ($blog->ManyRelationTags as $item)
+                     <a href="#">{{$item->title}},</a>
+                   @endforeach
+
                 </div>
                 <div class="social-share">
                     <span>Share:</span>
@@ -59,10 +56,10 @@
                 </div>
                 <div class="post-author">
                     <div class="author-img">
-                        <img src="{{ asset('frontend')}}/assets/img/post-details/post-author.png" alt="PostAuthor">
+                        <img src="{{ asset('uploads/about')}}/{{$about->image}}" alt="PostAuthor">
                     </div>
-                    <h5><a href="#">Maisha Smith</a></h5>
-                    <p>Article Writer, Senior Designer, Wordpress Developer Father of 2 Daughters</p>
+                    <h5><a href="#">{{$about->name}}</a></h5>
+                    <p>{{$about->profession}}</p>
                 </div>
             </div>
             <div class="post-nav">

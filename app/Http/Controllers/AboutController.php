@@ -23,6 +23,7 @@ class AboutController extends Controller
 
 
         About::insert([
+        'name' => $request->name,
         'title' => $request->title,
         'description' => $request->description,
         'image' => $new_name,
@@ -72,6 +73,7 @@ public function delete($id){
             $img->save(base_path('public/uploads/about/' . $new_name), 60);
 
                 About::find($id)->update([
+                    'name' => $request->name,
                     'title' => $request->title,
                     'description' => $request->description,
                     'image' => $new_name,

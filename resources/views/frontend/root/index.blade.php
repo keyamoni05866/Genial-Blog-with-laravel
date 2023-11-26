@@ -153,17 +153,14 @@
 
                         {{-- Bloger --}}
 						<div class="col-lg-12 col-sm-6 widget author-widget">
-							<div class="author-img">
-								<img src="assets/img/sidebar/author.jpg" alt="Post-Author">
+							<div class="author-img ">
+								<img src="{{ asset('uploads/about')}}/{{$about->image}}" alt="Post-Author" style="border-radius: 10px">
 							</div>
-							<h5 class="widget-title">I am a Bloger</h5>
+							<h5 class="widget-title">{{$about->title}}</h5>
 							<p>
-								When it comes to creating is a website for your business, an attractive design will only
-								get you far,...
+							{{$about->description}}
 							</p>
-							<div class="author-signature">
-								<img src="assets/img/sidebar/author-signature.png" alt="Signature">
-							</div>
+
 						</div>
 
                         {{-- categories --}}
@@ -207,49 +204,24 @@
                         {{-- popular article --}}
 						<div class="col-lg-12 col-sm-6 widget popular-articles">
 							<h5 class="widget-title">Popular Articles</h5>
-							<div class="articles">
-								<div class="article">
-									<div class="thumb">
-										<img src="assets/img/sidebar/articles/01.jpg" alt="Image">
-									</div>
-									<div class="desc">
-										<h6><a href="blog-details.html">Best Wordpress Theme of 2018</a></h6>
-										<span class="post-date">Audust 23, 2015</span>
-									</div>
-								</div>
-								<div class="article">
-									<div class="thumb">
-										<img src="assets/img/sidebar/articles/02.jpg" alt="Image">
-									</div>
-									<div class="desc">
-										<h6><a href="blog-details.html">Dating While Studying Abroad—Maximize Fun
-												Minimize Heartbreak</a></h6>
-										<span class="post-date">Audust 23, 2015</span>
-									</div>
-								</div>
-								<div class="article">
-									<div class="thumb">
-										<img src="assets/img/sidebar/articles/03.jpg" alt="Image">
-									</div>
-									<div class="desc">
-										<h6><a href="blog-details.html">Nature Photography Best Place Focus</a></h6>
-										<span class="post-date">Audust 23, 2015</span>
-									</div>
-								</div>
-								<div class="article">
-									<div class="thumb">
-										<img src="assets/img/sidebar/articles/04.jpg" alt="Image">
-									</div>
-									<div class="desc">
-										<h6><a href="blog-details.html">Best Wordpress Theme of 2018</a></h6>
-										<span class="post-date">Audust 23, 2015</span>
-									</div>
-								</div>
-							</div>
+							@forelse ($popular_blogs as $popular)
+                                <div class="articles mt-4">
+                            <div class="article">
+                                <div class="thumb">
+                                    <img src="{{ asset('uploads/blog')}}/{{$popular->image}}" alt="Image">
+                                </div>
+                                <div class="desc">
+                                    <h6><a href="blog-details.html">{{$popular->title}}</a></h6>
+                                    <span class="post-date">{{$popular->date}}</span>
+                                </div>
+                            </div>
+
+                        </div>
+                            @empty
+                            <h2 class="text-danger font-bold text-center">No Popular Blogs Found</h2>
+                            @endforelse
 						</div>
-						<div class="col-lg-12 col-sm-6 widget ad-widget">
-							<img src="assets/img/sidebar/ad.jpg" alt="Image">
-						</div>
+
 					</div>
 				</div>
 			</div>

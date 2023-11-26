@@ -32,31 +32,44 @@
                    <div  class="row">
                     <div class="col-6 mt-2">
                         <label for="exampleInputEmail1" class="form-label">
-                            Title:</label>
+                            Name:</label>
                         <input type="text" class="form-control form-control-rounded"
-                            aria-describedby="..." placeholder="Insert Bio Title"
-                            name="title" >
+                            aria-describedby="..." placeholder="Inter Your Name"
+                            name="name" >
 
                     </div>
 
                    <div class="col-6 ">
-                    <label for="exampleInputEmail1" class="form-label mt-3">Profession:</label>
+                    <label for="exampleInputEmail1" class="form-label mt-3">Title:</label>
                     <input type="text" class="form-control  form-control-rounded"
-                        aria-describedby="..." placeholder="Insert Your Profession"
-                        name="profession" >
+                        aria-describedby="..." placeholder="Insert Bio Title"
+                        name="title" >
                    </div>
                    </div>
 
+                  <div class="row">
 
-
-
-
-
+                    <div class="col-6 ">
+                        <label for="exampleInputEmail1" class="form-label mt-3">Profession:</label>
+                        <input type="text" class="form-control  form-control-rounded"
+                            aria-describedby="..." placeholder="Insert Your Profession"
+                            name="profession" >
+                       </div>
+                      <div class="col-6">
                         <label for="exampleInputEmail1" class="form-label mt-3">Your
                             Image:</label>
                         <input type="file"
                             class="form-control form-control-solid-bordered form-control-rounded"
                             aria-describedby="..." name="image">
+                      </div>
+
+
+                  </div>
+
+
+
+
+
 
 
                             <label for="exampleInputEmail1" class="form-label mt-3"> Description:</label>
@@ -82,7 +95,8 @@
         <div class="card" style="width: 25rem;">
             <img src="{{ asset('uploads/about') }}/{{ $about->image }}" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">Bio: {{$about->title}}</h5>
+              <h5 class="card-title">Name: {{$about->name}}</h5>
+              <h6 class="card-title">Bio: {{$about->title}}</h6>
               <h6 class="card-title">Profession: {{$about->profession}}</h6>
 
               <p class="card-text">Description: {{$about->description}} </p>
@@ -107,7 +121,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Category Inventroy
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">About Inventroy
                                 </h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
@@ -119,6 +133,15 @@
 
 
                                <div  class="row">
+
+
+                                <div class="col-6 ">
+                                    <label for="exampleInputEmail1" class="form-label mt-3">Name:</label>
+                                    <input type="text" class="form-control  form-control-rounded"
+                                        aria-describedby="..."
+                                        name="name" value="{{$about->name}}">
+                                   </div>
+
                                 <div class="col-6 mt-2">
                                     <label for="exampleInputEmail1" class="form-label">
                                         Title:</label>
@@ -128,18 +151,27 @@
 
                                 </div>
 
-                               <div class="col-6 ">
-                                <label for="exampleInputEmail1" class="form-label mt-3">Profession:</label>
-                                <input type="text" class="form-control  form-control-rounded"
-                                    aria-describedby="..." placeholder="Insert Your Profession"
-                                    name="profession" value="{{$about->profession}}">
+
+
                                </div>
-                               </div>
+                               <div class="row">
+
+                                <div class="col-6 ">
+                                    <label for="exampleInputEmail1" class="form-label mt-3">Profession:</label>
+                                    <input type="text" class="form-control  form-control-rounded"
+                                        aria-describedby="..." placeholder="Insert Your Profession"
+                                        name="profession" value="{{$about->profession}}">
+                                   </div>
+
+                                <div class="col-6">
                                     <label for="exampleInputEmail1" class="form-label mt-3">Your
                                         Image:</label>
                                     <input type="file"
                                         class="form-control form-control-solid-bordered form-control-rounded"
                                         aria-describedby="..." name="image">
+                                 </div>
+
+                               </div>
 
 
                                         <label for="exampleInputEmail1" class="form-label mt-3"> Description:</label>
