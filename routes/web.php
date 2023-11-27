@@ -6,6 +6,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryBlogController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,10 @@ Route::get('/root/blogs/', [FrontendController::class, 'blog_index'])->name('roo
 Route::get('/root/contact', [FrontendController::class, 'contact_index'])->name('contact');
 Route::post('/contact/post', [FrontendController::class, 'contact_post'])->name('contacts.post');
 
+// comments route
+Route::post('/root/blog/single/comment', [CommentController::class, 'index'])->name('comment');
+
+
 
 // category blog controller
 Route::get('/root/category/blog/{id}', [CategoryBlogController::class, 'index'])->name('root.category.blog');
@@ -56,7 +61,7 @@ Route::get('/register', function () {
     return view('frontend.error.error');
 });
 
-// route for error
+
 
 
 

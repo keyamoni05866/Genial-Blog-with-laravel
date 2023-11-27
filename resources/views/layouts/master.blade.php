@@ -12,7 +12,7 @@
 	<meta name="description" content="" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<!--====== Title ======-->
-	<title> Genial Blog Html Template || Home Two </title>
+	<title> Genial Blog </title>
 	<!--====== Favicon Icon ======-->
 	<link rel="shortcut icon" href="{{ asset('frontend')}}/assets/img/favicon.ico" type="img/png" />
 	<!--====== Animate Css ======-->
@@ -207,6 +207,7 @@
 	<script src="{{ asset('frontend')}}/assets/js/jquery.nice-select.min.js"></script>
 	<!--====== Main js ======-->
 	<script src="{{ asset('frontend')}}/assets/js/main.js"></script>
+    @yield('footer_script')
 </body>
 
 

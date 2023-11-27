@@ -6,6 +6,7 @@ use App\Mail\ContactMail;
 use App\Models\About;
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -13,10 +14,11 @@ use Illuminate\Support\Facades\Mail;
 class FrontendController extends Controller
 {
 // error
-              public function error(){
-                return view('frontend.error.error');
-              }
+  public function error(){
+   return view('frontend.error.error');
+ }
 
+//  Main Index for root page  /////
 
         public function index(){
             $blogs = Blog::where('status','active')->latest()->paginate(5);
@@ -33,16 +35,15 @@ class FrontendController extends Controller
         public function single($id){
             $blog = Blog::where('id',$id)->first();
             $about=About::where('status','active')->first();
-
-
             // return $about->profession;
 
+            $comments = Comment::with('relationwithreply')->where('blog_id',$id)->whereNull('reply_id')->get();
             if($blog){
                 Blog::find($id)->update([
                   'visitor_count' => $blog->visitor_count  + 1,
                 ]);
             }
-            return view('frontend.singleBlog.singleBlog', compact('blog','about'));
+            return view('frontend.singleBlog.singleBlog', compact('blog','about','comments'));
         }
 
 
